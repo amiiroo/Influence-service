@@ -1,0 +1,9 @@
+[build]
+builder = "nixpacks"
+buildCommand = "composer install --optimize-autoloader --no-dev"
+
+[deploy]
+startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+healthcheckPath = "/"
+healthcheckTimeout = 90
+restartPolicyType = "ON_FAILURE"
